@@ -3,7 +3,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <MyHeader :addToDo="addToDo"/>
-      <List :todos="todos"/>
+      <List :todos="todos" :changeToDo="changeToDo"/>
       <MyFooter/>
     </div>
   </div>
@@ -33,8 +33,17 @@ export default {
       }
     },
     methods:{
+      //添加TODO
       addToDo(temp){
         this.todos.unshift(temp)
+      },
+      //修改todo状态
+      changeToDo(id){
+        this.todos.forEach(todo => {
+          if(todo.id===id){
+            todo.done=!todo.done//取反重新赋值
+          }
+        });
       }
     }
 }

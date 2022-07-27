@@ -1,7 +1,7 @@
 <template>
     <li>
         <label>
-        <input type="checkbox" :checked="todo.done"/>
+        <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
         <span>{{todo.title}}</span>
         </label>
         <button class="btn btn-danger" style="display:none">删除</button>
@@ -12,7 +12,12 @@
 export default {
     name:'Item',
     //声明接受对象
-    props:['todo']
+    props:['todo','changeToDo'],
+    methods:{
+      handleCheck(id){
+        this.changeToDo(id)
+      }
+    }
 }
 </script>
 

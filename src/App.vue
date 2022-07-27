@@ -4,7 +4,7 @@
     <div class="todo-wrap">
       <MyHeader :addToDo="addToDo"/>
       <List :todos="todos" :changeToDo="changeToDo" :deleteToDo="deleteToDo"/>
-      <MyFooter :todos="todos"/>
+      <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
     </div>
   </div>
 </div>
@@ -47,11 +47,22 @@ export default {
       },
       //删除一个todo
       deleteToDo(id){
-        //过滤器搞完后要及时重新赋值回去
+        //过滤器搞完后要及时重新赋值回去,因为filter不影响原数组
         this.todos=this.todos.filter((todo)=>{
             return todo.id !==id
         })
-
+      },
+      //删除所有todo
+      clearAllTodo(){
+        this.todos=this.todos.filter((todo)=>{
+            return !todo.done
+        })
+      },
+      //修改所有的完成属性
+      checkAllTodo(done){
+        this.todos.forEach((todo)=>{
+          todo.done=done
+        })
       }
     }
 }

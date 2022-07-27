@@ -1,25 +1,15 @@
 # todolist
 
-## Project setup
-```
-npm install
-```
 
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
 # 组件化编码流程(通用)
 
 ## ​拆分静态组件
 
-组件要按照功能点拆分，命名不要与html元素冲突。  
+组件要按照**功能点**拆分，命名不要与html元素冲突。  
 划分方式:  
 1. 按照功能划分
 2. 按照区域划分
@@ -34,10 +24,11 @@ npm run build
 
 数据保存在哪个组件需要考虑好数据的存放位置，数据是一个组件在用，还是一些组件在用？  
 1. ​一个组件在用：放在组件自身即可。
-2. 一些组件在用：放在他们共同的父组件上（状态提升）。
+2. 一些组件在用：放在他们共同的父组件上（`状态提升`）。
 
 ### 组件间通信
 
+现在还没学总线等技术，所以先用props凑合着过吧
 善待使用props，不要将不能用的词传过去，例如`add`,`data`等等
 
 ## 实现交互
@@ -49,7 +40,7 @@ npm run build
 
 ​ (2).子组件 ==> 父组件 通信（要求父先给子一个函数）
 
-使用v-model时要切记：v-model绑定的值不能是props传过来的值，因为props是不可以修改的！
+使用v-model时要切记：v-model绑定的值**不能是props传过来的值**，因为props是不可以修改的！
 
 props传过来的若是对象类型的值，修改对象中的属性时Vue不会报错，但不推荐这样做。  
 

@@ -1,13 +1,31 @@
 <template>
     <div class="todo-header">
-        <input type="text" placeholder="请输入你的任务名称，按回车键确认"/>
+        <input type="text"  placeholder="请输入你的任务名称，按回车键确认" @keyup.enter="add"/>
     </div>
 </template>
 
 <script>
+import {nanoid} from 'nanoid'
 export default {
-    name:'MyHeader'
+    name:'MyHeader',
+    methods:{
+      add(e){
 
+        //校验数据
+        if(!e.target.value) return alert("请输入内容，别说啥事也没有！")
+       //将用户输入的东西包装成todo对象
+       const todoOBJ ={
+          id:nanoid(),
+          title:e.target.value,
+          done:false
+       }
+       //让App组件添加数据
+       this.addToDo(todoOBJ)
+       e.target.value=''//清空输入框
+      },
+      
+    },
+   props:['addToDo']
 }
 </script>
 

@@ -2,10 +2,9 @@
 <div id="root">
   <div class="todo-container">
     <div class="todo-wrap">
-      <MyHeader/>
-      <List/>
+      <MyHeader :addToDo="addToDo"/>
+      <List :todos="todos"/>
       <MyFooter/>
-
     </div>
   </div>
 </div>
@@ -22,7 +21,22 @@ export default {
     MyHeader,
     MyFooter,
     List
-  }
+  },
+  data(){
+      return{
+        todos:[
+          {id:'0001',title:'吃饭',done:true},
+          {id:'0002',title:'睡觉',done:false},
+          {id:'0003',title:'玩游戏',done:true},
+          {id:'0004',title:'打豆豆',done:false}
+        ]
+      }
+    },
+    methods:{
+      addToDo(temp){
+        this.todos.unshift(temp)
+      }
+    }
 }
 </script>
 

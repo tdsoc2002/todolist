@@ -1,9 +1,7 @@
 <template>
     <ul class="todo-main">
-        <Item/>
-        <Item/>
-        <Item/>
-        <Item/>
+      <!--传出数据-->
+      <Item v-for="todoOBJ in todos" :key="todoOBJ.id" :todo="todoOBJ"/>
     </ul>
 </template>
 
@@ -14,7 +12,9 @@ export default {
     name:'List',
     components:{
         Item
-    }
+    },
+    props:['todos']
+
 }
 </script>
 

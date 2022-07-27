@@ -1,7 +1,7 @@
 <template>
     <ul class="todo-main">
       <!--传出数据-->
-      <Item v-for="todoOBJ in todos" :key="todoOBJ.id" :todo="todoOBJ" :changeToDo="changeToDo"/>
+      <Item v-for="todoOBJ in todos" :key="todoOBJ.id" :todo="todoOBJ" :changeToDo="changeToDo" :deleteToDo="deleteToDo"/>
     </ul>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     components:{
         Item
     },
-    props:['todos','changeToDo']
+    props:['todos','changeToDo','deleteToDo']
 
 }
 </script>

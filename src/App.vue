@@ -3,8 +3,8 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <MyHeader :addToDo="addToDo"/>
-      <List :todos="todos" :changeToDo="changeToDo"/>
-      <MyFooter/>
+      <List :todos="todos" :changeToDo="changeToDo" :deleteToDo="deleteToDo"/>
+      <MyFooter />
     </div>
   </div>
 </div>
@@ -44,6 +44,14 @@ export default {
             todo.done=!todo.done//取反重新赋值
           }
         });
+      },
+      //删除一个todo
+      deleteToDo(id){
+        //过滤器搞完后要及时重新赋值回去
+        this.todos=this.todos.filter((todo)=>{
+            return todo.id !==id
+        })
+
       }
     }
 }
@@ -56,7 +64,6 @@ export default {
   }
 
   .btn {
-    display: inline-block;
     padding: 4px 12px;
     margin-bottom: 0;
     font-size: 14px;

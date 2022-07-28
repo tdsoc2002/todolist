@@ -20,12 +20,11 @@ export default {
           done:false
        }
        //让App组件添加数据
-       this.addToDo(todoOBJ)
+       this.$emit('addToDo',todoOBJ)
        e.target.value=''//清空输入框
       },
       
-    },
-   props:['addToDo']
+    }
 }
 </script>
 

@@ -13,7 +13,7 @@
 <script>
 export default {
     name:'MyFooter',
-    props:['todos','checkAllTodo','clearAllTodo'],
+    props:['todos'],
     computed:{
       //计算属性
       total(){
@@ -34,13 +34,13 @@ export default {
             return this.total===this.doneTotal&&this.total>0
         },
         set(value){
-            this.checkAllTodo(value)
+            this.$emit('checkAllTodo',value)
         }
       }
     },
     methods:{
       clearAll(){
-        this.clearAllTodo()
+        this.$emit('clearAllTodo')
       }
     }
     

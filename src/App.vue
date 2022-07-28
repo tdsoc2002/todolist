@@ -24,12 +24,7 @@ export default {
   },
   data(){
       return{
-        todos:[
-          {id:'0001',title:'吃饭',done:true},
-          {id:'0002',title:'睡觉',done:false},
-          {id:'0003',title:'玩游戏',done:true},
-          {id:'0004',title:'打豆豆',done:false}
-        ]
+        todos:JSON.parse(localStorage.getItem('todos'))||[]//防止返回值是Null后报错
       }
     },
     methods:{
@@ -63,6 +58,18 @@ export default {
         this.todos.forEach((todo)=>{
           todo.done=done
         })
+      }
+    },
+    watch:{
+      //简写版无法对数据的改变做出修改
+      // todos(value){
+      //   localStorage.setItem('todos',JSON.stringify(value))
+      // }
+      todos:{
+        deep:true,//开启深度监视，完整版watch写法
+        handler(value){
+          localStorage.setItem('todos',JSON.stringify(value))
+        }
       }
     }
 }

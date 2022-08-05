@@ -12,14 +12,14 @@
 export default {
     name:'Item',
     //声明接受对象
-    props:['todo','changeToDo','deleteToDo'],
+    props:['todo'],
     methods:{
       handleCheck(id){
-        this.changeToDo(id)
+        this.$bus.$emit('changeToDo',id)
       },
       handleDelete(id){
         if(confirm("确定删除吗？")){
-         this.deleteToDo(id)
+         this.$bus.$emit('deleteToDo',id)
         }
       }
     }

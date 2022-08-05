@@ -3,7 +3,7 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <MyHeader @addToDo="addToDo"/>
-      <List :todos="todos" :changeToDo="changeToDo" :deleteToDo="deleteToDo"/>
+      <List :todos="todos"/>
       <MyFooter :todos="todos" @checkAllTodo="checkAllTodo" @clearAllTodo="clearAllTodo"/>
     </div>
   </div>
@@ -71,6 +71,14 @@ export default {
           localStorage.setItem('todos',JSON.stringify(value))
         }
       }
+    },
+    mounted(){
+      this.$bus.$on('changeToDo',this.changeToDo)
+      this.$bus.$on('deleteToDo',this.deleteToDo)
+    },
+    beforeDestroy(){
+      this.$bus.$off('changeToDo')
+      this.$bus.$off('deleteToDo')
     }
 }
 </script>
